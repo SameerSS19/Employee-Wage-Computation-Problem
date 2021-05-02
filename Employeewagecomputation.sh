@@ -7,32 +7,30 @@ function attendance()
 	Random=$((RANDOM%2))
 	if [ $Random -eq 1 ]
 	 then
-		echo "Employee is present"
+		echo "Employee is present";
 	 else
-		echo "Employee is absent"
+		echo "Employee is absent";
 	fi
 }
-function main()
-{
+
 
 attendance
 
-}
-
-main
-
-isPartTime=1
-isFullTime=2
-empRatePerHr=20
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=20;
 randomCheck=$((RANDOM%3))
 
 
-if [ $isFullTime -eq $randomCheck ]
-then
-      empHrs=8
+case $randomCheck in
+        $isFullTime)
+	            empHrs=8;
+                       ;;
+        $isPartTime)
+                    empHrs=4;
+                       ;;
+               *)
+                    empHrs=0;
+esac
 
-else
-      empHrs=0
-fi
-
-salary=$(($empHrs * $empRatePerHr))
+salary=$(($empHrs * $empRatePerHr));
